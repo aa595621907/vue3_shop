@@ -1,27 +1,13 @@
 <template>
-  <div class="app">
-    <h1>App</h1>
-    <el-button type="primary">主要按钮</el-button>
-    <el-input v-model="input" placeholder="请输入内容"></el-input>
-  </div>
+  <!-- 路由填充位 -->
+  <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'App',
-  setup() {
-    return {
-      input: ref('')
-    }
-  }
+  name: 'App'
 })
 </script>
 
-<style lang="less" scoped>
-.App {
-  h1 {
-    color: yellow;
-  }
-}
-</style>
+<style></style>
