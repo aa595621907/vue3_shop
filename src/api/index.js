@@ -7,8 +7,27 @@ import ajax from './ajax'
 
 // 登录
 export const reqLogin = (username, password) =>
-  ajax(
-    'http://127.0.0.1:8888/api/private/v1/login',
-    { username, password },
-    'POST'
-  )
+  ajax('/login', { username, password }, 'POST')
+
+// 获取右侧导航菜单
+export const getNavMenu = () => ajax('/menus')
+
+// 获取用户信息
+export const getUserInfo = (pagenum, pagesize) =>
+  ajax('/users', { pagenum, pagesize })
+
+// 修改用户状态
+export const updateUserStatus = url => ajax(url, {}, 'PUT')
+
+// 编辑用户提交
+export const editUserInfo = (url, email, mobile) =>
+  ajax(url, { email, mobile }, 'PUT')
+
+// 删除用户
+export const deleteUserInfo = url => ajax(url, {}, 'DELETE')
+
+// 获取角色列表
+export const getUserRoleList = url => ajax(url)
+
+// 分配用户角色
+export const setUserRoleApi = (url, rid) => ajax(url, { rid }, 'PUT')

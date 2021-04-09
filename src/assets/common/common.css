@@ -9,3 +9,9 @@ html,
   width: 100%;
   height: 100%;
 }
+
+/* 面包屑字体大小 */
+.el-breadcrumb {
+  font-size: 12px;
+  margin-bottom: 20px;
+}

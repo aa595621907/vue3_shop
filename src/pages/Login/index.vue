@@ -34,11 +34,10 @@
 
 <script>
 import { defineComponent, reactive, toRefs, ref, getCurrentInstance } from 'vue'
-import { ElMessage } from 'element-plus'
 import { reqLogin } from '../../api'
 export default defineComponent({
   name: 'Login',
-  setup(props) {
+  setup() {
     // 获取Form表单元素
     const loginFormRef = ref(null)
     // 组件实例
@@ -91,9 +90,14 @@ export default defineComponent({
             loginReactive.loginForm.username,
             loginReactive.loginForm.password
           )
-          if (res.meta.status !== 200) return ElMessage.error(res.meta.msg)
-          ElMessage.success(res.meta.msg)
-          //   proxy.router.replace()
+          if (res.meta.status !== 200) return proxy.$message.error(res.meta.msg)
+          proxy.$message.success(res.meta.msg)
+          // 用户信息
+          const { data } = res
+          // 保存本地信息
+          window.localStorage.setItem('USER_KEY', JSON.stringify(data.token))
+          // 登录成功后跳转到home页面
+          proxy.$router.replace('/home')
         } else {
           return false
         }
